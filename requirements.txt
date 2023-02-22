@@ -1,0 +1,22 @@
+# Standard library
+pydantic==1.9.0
+pandas==1.1.5
+numpy==1.18.5
+matplotlib==3.3.4
+PyQt5==5.9.2
+scipy==1.5.4
+seaborn==0.11.2
+tqdm==4.64.1
+# Distance string metrics
+Levenshtein==0.20.5
+jaro-winkler==2.0.3
+fuzzywuzzy==0.18.0
+# ML
+scikit-learn==0.24.2
+tensorflow==2.3.4
+
+
+
+
+
+
