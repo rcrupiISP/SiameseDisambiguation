@@ -28,9 +28,9 @@ class Siamese:
         :param fill_char: padding char
         :return: a labelencoded string in the form of a list
         """
-        padd_string = string.ljust(tot_len, fill_char)
-        # Set to zero the unknown characters
-        return [le[ch] if ch in le.keys() else 0 for ch in list(padd_string)]
+        padd_string = list(string.ljust(tot_len, fill_char))
+        # Set to zero the unknown characters and cut at tot_len
+        return [le[ch] if ch in le.keys() else 0 for ch in padd_string[:tot_len]]
 
     @staticmethod
     def fit_labelencoding(le, list_string, tot_len=500, fill_char=u"\u2797"):

@@ -27,7 +27,15 @@ ground_dtf = get_dataset(PATH_EXP + 'data/',
 
 ENCODER_OPT['encode_on'] = ground_dtf[X_COLS]
 
-tt_ratio = round(1-max(n_train.values())/ground_dtf.shape[0], 6)
+tot_needed = max(n_train.values()) + max(n_test.values())[0]
+remaining = ground_dtf.shape[0] - tot_needed
+assert tot_needed <= ground_dtf.shape[0], 'Invalid train and test size: not enough samples'
+if max(n_train.values()) > int(ground_dtf.shape[0]/2):
+    for_train = int(max(n_train.values()) + remaining / 2)
+    tt_ratio = round(1-(for_train/ground_dtf.shape[0]), 6)
+else:
+    tt_ratio = 0.5
+
 TRAIN, TEST = get_train_test(ground_dtf,
                              n_train,
                              n_test,

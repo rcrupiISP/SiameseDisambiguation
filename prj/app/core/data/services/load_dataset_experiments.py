@@ -23,7 +23,7 @@ def split_dtf(dtf_in, split, level):
     # In case frac = 1, return the same dataframe
     frac_size = split / dtf.shape[0]
     if round(frac_size, 2) >= 0.99:
-        df_samp = dtf.sample(frac=frac_size, random_state=0)
+        df_samp = dtf.sample(frac=frac_size, replace=True, random_state=0)
         return dtf, df_samp.reset_index(drop=True)
 
     if type(split) == float:
@@ -164,7 +164,7 @@ def get_dataset(path, frac, n_neg, df_col, source=SOURCE_DEFAULT):
         print(f'{datetime.now()}: Generate negatives')
         for i, c in enumerate(col):
             df[df_col[i]] = df[c].str.upper()
-            df[df_col[i]] = df[df_col[i]].apply(lambda x: " ".join(x.split()))
+            df[df_col[i]] = df[df_col[i]].apply(lambda x: " ".join(str(x).split()))
         dtf_positives = df[df_col[:-1]].drop_duplicates()
         dtf_ret = swap_colunms(dtf_positives.loc[:, df_col[:-1]], df_col[:-1], portion=frac)
 
