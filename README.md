@@ -92,7 +92,7 @@ The output is the table containing the model performances in each test set, whic
 ### Models performance in the active learning settings
 Active learning procedures are utilized to lower the costs of labeling while maximizing the classifier performances. By starting with a limited number of labeled samples $X_l$ and a set of not-labeled-yet instances $X_u$, active learning considers labeling just a limited number of samples $X_c \subset X_u$ according to some query strategies in a multi-step procedure. Here we adopt an uncertainty sampling strategy where, at each step, instances of $X_u$ on which the prediction of the most updated model is less certain are selected. We denote this strategy as the **least-confident learner**.
 These data points are then removed from $X_u$, labeled, and then added to $X_l$ to train a (hopefully) improved version of the classifier. 
-![ffig](https://user-images.githubusercontent.com/125964392/220958386-4743306a-ea7a-47ae-bca5-6d1b0690d7b1.jpg)
+![AL](https://user-images.githubusercontent.com/92302358/221153113-e2765603-62a9-4b6e-9f0b-4d2a41c54165.PNG)
 
 To benchmark this procedure, besides the  least-confident learner described above, we run the same experiment with a **random learner**, in which the next-to-be labeled instances are picked at random. 
 We assume that the initially labeled instances are the ones in the smaller training set $X^0_l=S^S_{train}$, while the total unlabeled instances are those in the difference between the larger and the smaller training sets, i.e. $X^0_u=S^L_{train}$\ $S^S_{train}$.
