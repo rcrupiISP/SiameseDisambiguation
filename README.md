@@ -109,3 +109,9 @@ The method **```apply_active(train_small, unlabelled, test_set, X_cols, y_col)``
 At each step, the method computes precision, recall, f1 score, balanced accuracy, and macro-averaged f1 for the four types of tests **pre-train batch test**, **post-train batch test**, **not-labeled-yet test**, and **test set**. 
 The outputs are the tables containing the classifiers' performance at each step and the plots of the balanced accuracy for the four types of tests. The outputs are  stored in the ''DATE_FOLDER_NAME/active/'' folder.
 
+## Quick start
+Put the data to disambiguate in the folder ''data/''.
+```
+cd prj/app/core/pipelines/services
+python Pipeline_experiments.py
+```
