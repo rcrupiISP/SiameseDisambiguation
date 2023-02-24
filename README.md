@@ -110,8 +110,9 @@ At each step, the method computes precision, recall, f1 score, balanced accuracy
 The outputs are the tables containing the classifiers' performance at each step and the plots of the balanced accuracy for the four types of tests. The outputs are  stored in the ''DATE_FOLDER_NAME/active/'' folder.
 
 ## Quick start
-Put the data to disambiguate in the folder ''data/''.
+Create a ''data/'' folder. Configure it in config.py and include the dataset to disambiguate in there. Then run:
 ```
 cd prj/app/core/pipelines/services
 python Pipeline_experiments.py
 ```
+the output will the placed in the ''experiments/'' folder.
