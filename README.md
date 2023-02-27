@@ -108,8 +108,7 @@ We assume that the initially labeled instances are the ones in the smaller train
 At the end of each iteration $j$, the classifier's performance is evaluated as follows: 
 1. *pre-train batch test*: test the model $\mathcal{C}^{j}$ on the next-to-be-labelled instances, i.e. $X^{j}_{c}$
 2. The model is trained with respect to the new training set $(X^{j}_l, y^{j}_l)$, thus obtaining $\mathcal{C}^{j+1}$
-3. We train with respect to the new training set $(X^{j}_l, y^{j}_l)$, thus obtaining $\mathcal{C}^{j+1}$.
-4. $\mathcal{C}^{j+1}$ is tested on:
+3. $\mathcal{C}^{j+1}$ is tested on:
   - the batch samples $X^{j}_{c}$, and we refer to it as the *post-train batch test*
   - the updated unlabelled set $X^{j}_u$, i.e. all the remaining unlabelled instances, and we refer to it as the *not-labeled-yet test*
   - the actual *test sets*
