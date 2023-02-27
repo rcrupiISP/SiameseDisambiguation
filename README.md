@@ -16,6 +16,15 @@ Python 3.8.10:
 ```
 pip install -r requirements.txt
 ```
+
+## Quick start
+Create a ''data/'' folder. Configure it in config.py and include the dataset to disambiguate in there. Then run:
+```
+cd prj/app/core/pipelines/services
+python Pipeline_experiments.py
+```
+the output will the placed in the ''experiments/'' folder.
+
 ## Settings
 The following is a brief description of the parameters collected in the file prj/app/config/config.py that can be modified by the user:
 - **Folder tree structure**
@@ -51,7 +60,7 @@ The samples are then split into two groups for training and testing, taking care
 By following the description in our paper, we generate several training datasets with different sizes specified in the ''n_train'' variable. These are obtained by hierarchical subsampling elements from the larger sample, i.e. from the training samples, select N_1 samples to form train_1 dataset, from train_1 dataset select N_2 samples (with N_1 > N_2) to form the train_2 dataset, etc. For the following, we assume that there are only three training sets $S^S_{train} \subset S^M_{train} \subset S^L_{train}$.
 The sizes of the test sets are specified in the ''n_test'' variable in the form {'test_name': [R_size, M_size]}. Two types of test sets are generated for each ''test_name'': the ''R_'' obtained by randomly selecting R_size elements from the test samples, and the ''M_'' obtained by ordering the ''R_'' samples by a given similarity metric to take the (M_size/2) most dissimilar matching names and the (M_size/2) most similar non-matching names.
 
-The training and test datasets are then collected in the two dictionaries **TRAIN**={train_name: S^{name}_{train}, ...} and **TEST**={test_name: S^{name}_{test}, ...}
+The training and test datasets are then collected in the two dictionaries **TRAIN**={train_name: $S^{name}_{train}$, ...} and **TEST**={test_name: $S^{name}_{test}$, ...}
 
 ## How to run the experiments
 The procedure to run the experiments is the following:
@@ -108,11 +117,3 @@ At the end of each iteration $j$, the classifier's performance is evaluated as f
 The method **```apply_active(train_small, unlabelled, test_set, X_cols, y_col)```** implements the active learning settings just described to train a Random Forest and a Siamese Neural Network. 
 At each step, the method computes precision, recall, f1 score, balanced accuracy, and macro-averaged f1 for the four types of tests **pre-train batch test**, **post-train batch test**, **not-labeled-yet test**, and **test set**. 
 The outputs are the tables containing the classifiers' performance at each step and the plots of the balanced accuracy for the four types of tests. The outputs are  stored in the ''DATE_FOLDER_NAME/active/'' folder.
-
-## Quick start
-Create a ''data/'' folder. Configure it in config.py and include the dataset to disambiguate in there. Then run:
-```
-cd prj/app/core/pipelines/services
-python Pipeline_experiments.py
-```
-the output will the placed in the ''experiments/'' folder.
