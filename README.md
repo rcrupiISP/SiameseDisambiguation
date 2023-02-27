@@ -51,7 +51,7 @@ The user can provide the data in two different ways:
 - directly as a **pandas DataFrame with 3 columns**, two columns for the pair of names (X=[name_A, name_B]) and one for the label (y), and stored in ''PATH_EXP/data/''. The name of the file (file_name) and its extension (file_ext) has to be setted in DATA_OPT as DATA_OPT[''source'']=''file_name.file_ext''. 
 - as a **pandas DataFrame with only the 2 columns** for the pair of names (X) **and containing only matching names**. In this case, the function get_dataset() will generate the non-matching names by randomly pairing the names in the two columns X_COLS. The proportion between matching and non-matching names samples can be set by tuning the DATA_OPT[''n_neg''] parameter in config.py, e.g. DATA_OPT[''n_neg'']=4 will produce 4 non-matching for each matching pair. As in the previous case, this dataframe has to be stored in ''PATH_EXP/data/'' and its name passed to DATA_OPT[''source''].
 
-If DATA_OPT[''source'']=None or the file of the dataset can not be found in the ''data/'' folder, a dummy dataset of acronyms with two columns is downloaded from ''[https://raw.githubusercontent.com/krishnakt031990/Crawl-Wiki-For-Acronyms/master/AcronymsFile.csv](https://github.com/krishnakt031990/Crawl-Wiki-For-Acronyms/blob/master/AcronymsFile.csv)'' and processed as described above.
+If DATA_OPT[''source'']=None or the file of the dataset can not be found in the ''data/'' folder, a dummy dataset of acronyms with two columns is downloaded from ''[https://github.com/krishnakt031990/Crawl-Wiki-For-Acronyms/blob/master/AcronymsFile.csv](https://github.com/krishnakt031990/Crawl-Wiki-For-Acronyms/blob/master/AcronymsFile.csv)'' and processed as described above.
 
 Note: allowed files extensions are pickle (.pkl), CSV (.csv with sep=',' or sep=';'), text (.txt with sep='\n'), excel (.xlsx requires openpyxl engine), parquet (.parquet requires pyarrow engine).
 
@@ -60,7 +60,7 @@ The samples are then split into two groups for training and testing, taking care
 By following the description in our paper, we generate several training datasets with different sizes specified in the ''n_train'' variable. These are obtained by hierarchical subsampling elements from the larger sample, i.e. from the training samples, select N_1 samples to form train_1 dataset, from train_1 dataset select N_2 samples (with N_1 > N_2) to form the train_2 dataset, etc. For the following, we assume that there are only three training sets $S^S_{train} \subset S^M_{train} \subset S^L_{train}$.
 The sizes of the test sets are specified in the ''n_test'' variable in the form {'test_name': [R_size, M_size]}. Two types of test sets are generated for each ''test_name'': the ''R_'' obtained by randomly selecting R_size elements from the test samples, and the ''M_'' obtained by ordering the ''R_'' samples by a given similarity metric to take the (M_size/2) most dissimilar matching names and the (M_size/2) most similar non-matching names.
 
-The training and test datasets are then collected in the two dictionaries **TRAIN**={train_name: $S^{name}_{train}$, ...} and **TEST**={test_name: $S^{name}_{test}$, ...}
+The training and test datasets are then collected in the two dictionaries **TRAIN** = \{train_n: $S^n_{train}$, ...\} and **TEST** = \{test_n: $S^{n}_{test}$, ...\}
 
 ## How to run the experiments
 The procedure to run the experiments is the following:
