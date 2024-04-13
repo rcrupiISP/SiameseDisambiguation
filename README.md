@@ -6,8 +6,20 @@ Python project for a disambiguation technique based on a Siamese Neural Network 
 
 To know more about this research work, please refer to our paper:
 
-- Basile, Alessandro, et al. "Disambiguation of Company names via Deep Recurrent Networks." [arXiv preprint arXiv:2303.05391 (2023)](https://arxiv.org/abs/2303.05391).
+- Basile, Alessandro, et al. "Disambiguation of Company names via Deep Recurrent Networks." [ESWA (2024)](https://doi.org/10.1016/j.eswa.2023.122035), [arXiv (2023)](https://arxiv.org/abs/2303.05391).
 
+You can cite this work as:
+```
+@article{basile2024disambiguation,
+  title={Disambiguation of company names via deep recurrent networks},
+  author={Basile, Alessandro and Crupi, Riccardo and Grasso, Michele and Mercanti, Alessandro and Regoli, Daniele and Scarsi, Simone and Yang, Shuyi and Cosentini, Andrea Claudio},
+  journal={Expert Systems with Applications},
+  volume={238},
+  pages={122035},
+  year={2024},
+  publisher={Elsevier}
+}
+```
 
 ## Installation
 Create a new environment based on Python 3.8.10 and install the requirements.
